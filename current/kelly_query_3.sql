@@ -4,6 +4,7 @@ SELECT client_id,
        MAX(is_member_at_allocation) AS is_member_at_allocation,
        MAX(is_ever_member) AS is_ever_member,
        MAX(is_signedup_after_allocation) AS is_signedup_after_allocation,
+       MAX(is_signed_up_on_allocation) AS is_signed_up_on_allocation,
        cell,
        test_id,
        country_code
@@ -22,12 +23,17 @@ FROM
                       'y'
                  ELSE
                       'n'
-            END is_ever_member,
+            END is_former_mmember,
             CASE WHEN c.signup_tsp > a.allocation_tsp THEN
                       'y'
                  ELSE 
                       'n'
             END is_signedup_after_allocation,
+            CASE WHEN a.allocation_tsp = c.signup_tsp THEN
+                      'y'
+                 ELSE
+                      'n'
+            END is_signed_up_on_allocation,
             a.cell,
             a.test_id,
             a.country_code
@@ -40,7 +46,8 @@ FROM
           FROM default.ab_nonmember_events
           WHERE other_properties['clientId'] <> '' AND
                 dateint >= 20130612 AND
-                other_properties['opType'] = 'ALLOCATE') a
+                other_properties['opType'] = 'ALLOCATE' AND
+                other_properties['test'] = 3796) a
      LEFT OUTER JOIN
          (SELECT DISTINCT    
                  other_properties['clientId'] AS client_id,
