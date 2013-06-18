@@ -1,3 +1,4 @@
+INSERT OVERWRITE TABLE lsagi.wizard_anal
 SELECT client_id,
        customer_id,
        allocation_tsp,
@@ -74,8 +75,6 @@ FROM
          FROM dse.subscrn_derived_d) c
      ON (b.customer_id = c.account_id)) main
 WHERE customer_id IS NOT NULL
-GROUP BY client_id, customer_id, allocation_tsp, cell, test_id, country_code
-ORDER BY client_id, customer_id, allocation_tsp
-LIMIT 100;
+GROUP BY client_id, customer_id, allocation_tsp, cell, test_id, country_code;
 
 --client id, account id (if there is one), allocation date, allocation timestamp, test cell, test id, country id or sk, a flag for whether they are a current member (at the point of allocation...not if they sign-up during the test), a flag for whether they are a former member (at the point of allocation), a flag for any other de-allocation that occurred for reasons besides current/former member (and if you don't have this info, this flag is more a nice to have).
