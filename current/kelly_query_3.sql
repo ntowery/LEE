@@ -1,8 +1,6 @@
 SELECT client_id,
        customer_id,
        allocation_tsp,
-       signup_tsp,
-       cancel_tsp,
        MAX(is_member_at_allocation) AS is_member_at_allocation,
        MAX(is_ever_member) AS is_ever_member,
        MAX(is_signedup_after_allocation) AS is_signedup_after_allocation,
@@ -35,7 +33,7 @@ FROM
             a.country_code
      FROM 
          (SELECT other_properties['clientId'] AS client_id,
-                 CAST(from_unixtime(cast(substr(cast(other_properties['event_utc_ts_ms'] / 1000 AS string), 1, 10) AS bigint), 'yyyyHHddkkmmss') AS BIGINT) AS allocation_tsp,
+                 CAST(FROM_UNIXTIME(CAST(event_utc_ms / 1000 AS BIGINT), 'yyyyHHddkkmmss') AS BIGINT) AS allocation_tsp,
                  other_properties['cell'] AS cell,
                  other_properties['test'] AS test_id,
                  other_properties['countryCode'] AS country_code
@@ -59,7 +57,7 @@ FROM
      ON (a.client_id = b.client_id) 
      LEFT OUTER JOIN
         (SELECT account_id,
-                CAST(regexp_replace(from_unixtime(unix_timestamp(signup_utc_ts)), ":|-| ", "") AS BIGINT) signup_tsp,
+                CAST(REGEXP_REPLACE(FROM_UNIXTIME(UNIX_TIMESTAMP(signup_utc_ts)), ":|-| ", "") AS BIGINT) signup_tsp,
                 CASE WHEN cancel_date IS NULL THEN
                           20200101235959
                      ELSE
@@ -68,7 +66,7 @@ FROM
          FROM dse.subscrn_derived_d) c
      ON (b.customer_id = c.account_id)) main
 WHERE customer_id IS NOT NULL
-GROUP BY client_id, customer_id, allocation_tsp, signup_tsp, cancel_tsp, cell, test_id, country_code
+GROUP BY client_id, customer_id, allocation_tsp, cell, test_id, country_code
 ORDER BY client_id, customer_id, allocation_tsp
 LIMIT 100;
 
