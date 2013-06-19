@@ -1,20 +1,20 @@
 ----------------------------------------------------------------
-2013-06-11 05:33:32.449 GMT:
- Booting Derby version The Apache Software Foundation - Apache Derby - 10.4.2.0 - (689064): instance a816c00e-013f-31b9-906d-00002e0add08
-on database directory /dse/home/lsagi/TempStatsStore  
+2013-06-18 23:55:27.094 GMT:
+ Booting Derby version The Apache Software Foundation - Apache Derby - 10.4.2.0 - (689064): instance a816c00e-013f-59b6-e892-00002652bbf0
+on database directory /dse/home/lsagi/LEE/current/TempStatsStore  
 
 Database Class Loader started - derby.database.classpath=''
 
-2013-06-11 05:33:33.823 GMT:
-Shutting down instance a816c00e-013f-31b9-906d-00002e0add08
+2013-06-18 23:55:28.677 GMT:
+Shutting down instance a816c00e-013f-59b6-e892-00002652bbf0
 ----------------------------------------------------------------
 ----------------------------------------------------------------
-2013-06-11 05:35:03.803 GMT:
- Booting Derby version The Apache Software Foundation - Apache Derby - 10.4.2.0 - (689064): instance 2ba7c09b-013f-31b9-906d-00002e0add08
-on database directory /dse/home/lsagi/TempStatsStore  
+2013-06-18 23:57:26.388 GMT:
+ Booting Derby version The Apache Software Foundation - Apache Derby - 10.4.2.0 - (689064): instance 2ba7c09b-013f-59b6-e892-00002652bbf0
+on database directory /dse/home/lsagi/LEE/current/TempStatsStore  
 
 Database Class Loader started - derby.database.classpath=''
 
-2013-06-11 05:35:04.124 GMT:
-Shutting down instance 2ba7c09b-013f-31b9-906d-00002e0add08
+2013-06-18 23:57:26.706 GMT:
+Shutting down instance 2ba7c09b-013f-59b6-e892-00002652bbf0
 ----------------------------------------------------------------

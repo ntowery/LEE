@@ -1,6 +1,6 @@
 USE lsagi;
 
-CREATE EXTERNAL TABLE lsagi.wizard_anal
+CREATE EXTERNAL TABLE lsagi.wizard_analysis
 (client_id STRING,
  customer_id STRING,
  allocation_tsp STRING,
